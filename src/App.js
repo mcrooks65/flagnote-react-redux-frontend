@@ -1,12 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {fetchEngagements} from './actions/fetchEngagements';
 
 class App extends React.Component {
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/engagements/1')
-    .then(response => response.json())
-    .then(response => console.log(response.data.attributes.targets[0]))
-  }  // Testing pulling targets out of engagement, routed by url /id# 
+    this.props.fetchEngagements({type: 'FETCH_ENGAGEMENTS', payload: {name: 'Generic CTF Challenge'}})
+  }
 
   render() {
     return (
@@ -17,4 +17,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(null,{fetchEngagements})(App);
