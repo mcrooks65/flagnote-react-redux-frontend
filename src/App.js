@@ -1,20 +1,20 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {fetchEngagements} from './actions/fetchEngagements';
+// import {connect} from 'react-redux';
+import EngagementsContainer from './containers/EngagementsContainer';
 
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.fetchEngagements({type: 'FETCH_ENGAGEMENTS', payload: {name: 'Generic CTF Challenge'}})
+    
   }
 
   render() {
     return (
       <div className="App">
-        App
+        <EngagementsContainer/>
       </div>
     );
   }
 }
 
-export default connect(null,{fetchEngagements})(App);
+export default (App);
