@@ -4,10 +4,6 @@ import EngagementsContainer from './containers/EngagementsContainer';
 
 class App extends React.Component {
 
-  componentDidMount() {
-    
-  }
-
   render() {
     return (
       <div className="App">
@@ -17,4 +13,4 @@ class App extends React.Component {
   }
 }
 
-export default (App);
+export default App;
