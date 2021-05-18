@@ -1,20 +1,21 @@
 import React from 'react';
-import Engagements from '../components/Engagements'
-import EngagementForm from '../components/EngagementForm'
 import {connect} from 'react-redux';
-import {fetchEngagements} from '../actions/fetchEngagements'
+import {fetchEngagements} from '../actions/fetchEngagements';
+import Engagements from '../components/Engagements';
+import EngagementForm from '../components/EngagementForm';
+
 
 class EngagementsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.fetchEngagements()
+       this.props.fetchEngagements()
     }
 
     render() {
         return (
             <div>
                 <EngagementForm/>
-                <Engagements/>
+                <Engagements engagements={this.props.engagements}/>
             </div>
         )
     }
