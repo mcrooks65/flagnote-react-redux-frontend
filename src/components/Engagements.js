@@ -1,4 +1,5 @@
 import React from 'react'
+import Engagement from './Engagement'
 
 const Engagements = (props) => {
   return (
@@ -6,37 +7,11 @@ const Engagements = (props) => {
         <h2>Engagements Listing</h2>
         <ul>
             {props.engagements.map(engagement => 
-                <li key={engagement.id}>
-                    <h3>#{engagement.id}. {engagement.name} - {engagement.status} </h3> 
-                    {hasTargets(engagement)}
-                </li> 
+                <li key={engagement.id}><Engagement engagement={engagement}/></li> 
             )}
         </ul>
     </div>
   )
-}
-
-function hasTargets(engagement) {
-    
-    if (engagement.targets) {
-        return <ul> 
-            {engagement.targets.map(target => 
-                <li key={target.id}>
-                    Hostname - {target.hostname}
-                    <ul>
-                        <li>IP - {target.ipaddress}</li>
-                        <li>Target ID - {target.id}</li>
-                        <li>Engagement ID - {target.engagement_id}</li>
-                        <li>System Info - {target.sysinfo}</li>
-                        <li>Vulnerabilities - {target.vulns}</li>
-                        <li>Log - {target.log}</li>
-                        <li>Loot - {target.loot}</li>
-                        <li>Status - {target.status}</li>
-                    </ul>
-                </li>
-            )}
-        </ul>
-    } 
 }
 
 export default Engagements
