@@ -19,6 +19,10 @@ class EngagementForm extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.addEngagement(this.state)
+        this.setState({
+            name: '',
+            status: ''
+        })
     }
 
     render() {
