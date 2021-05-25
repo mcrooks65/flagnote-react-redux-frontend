@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Route} from 'react-router-dom';
 import {fetchEngagements} from '../actions/fetchEngagements';
 import Engagements from '../components/Engagements';
+import Engagement from '../components/Engagement';
 import EngagementForm from '../components/EngagementForm';
+import WelcomePage from '../components/WelcomePage';
 
 
 class EngagementsContainer extends React.Component {
@@ -14,8 +17,10 @@ class EngagementsContainer extends React.Component {
     render() {
         return (
             <div>
-                <EngagementForm/>
-                <Engagements engagements={this.props.engagements}/>
+                <Route exact path= '/' component={WelcomePage}/>
+                <Route path='/engagements/new' component={EngagementForm}/>
+                <Route path='engagement/:id' render={(routerProps) => <Engagement {...routerProps} engagement={this.props.engagement}/>}/>
+                <Route exact path='/engagements' render={() => <Engagements engagements={this.props.engagements}/>}/>
             </div>
         )
     }
