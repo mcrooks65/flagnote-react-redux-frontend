@@ -1,15 +1,18 @@
 import React from 'react'
-import Engagement from './Engagement'
+import {Link} from 'react-router-dom'
+// import Engagement from './Engagement'
 
 const Engagements = (props) => {
   return (
     <div>
         <h2>Engagements Listing</h2>
-        <ul>
+        <div>
             {props.engagements.map(engagement => 
-                <li key={engagement.id}><Engagement engagement={engagement}/></li> 
+                <li key={engagement.id}>
+                    <Link to={`/engagements/${engagement.id}`}>{engagement.name}: {engagement.status}</Link>
+                </li> 
             )}
-        </ul>
+        </div>
     </div>
   )
 }
