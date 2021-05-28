@@ -1,14 +1,22 @@
 import React from 'react'
-
+import TargetsContainer from '../containers/TargetsContainer'
 
 const Engagement = (props) => {
+    
+    let engagement = props.engagements[props.match.params.id - 1]
+    console.log(engagement)
 
-    return(
+    // To Do: Refactor hasTargets into Target.js component
+    return (
         <div>
-            <h3>#{props.engagement.id}. {props.engagement.name} - {props.engagement.status} </h3> 
-            {hasTargets(props.engagement)}
+            <div>
+                <h3>#{engagement ? engagement.id : null}. {engagement ? engagement.name : null} - {engagement ? engagement.status : null} </h3> 
+                {engagement ? hasTargets(engagement) : null} 
+                <TargetsContainer engagement={engagement}/>
+            </div>
         </div>
-    )
+  )
+
 }
 
 function hasTargets(engagement) {
