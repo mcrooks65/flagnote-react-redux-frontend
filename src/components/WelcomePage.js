@@ -4,13 +4,13 @@ import React from 'react'
 const WelcomePage = () => {
   return (
     <div>
-        <h1>Welcome to FlagNote v0.01</h1>
+        <h1>Welcome to FlagNote v0.25</h1>
         <a href="http://localhost:3000/engagements">
-          See Engagements Listing
+          List All Engagements
         </a>
-        <br></br>
+        <br/>
         <a href="http://localhost:3000/engagements/new">
-          New Engagement
+          Create New Engagement
         </a>
     </div>
   )
