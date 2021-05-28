@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {fetchEngagements} from '../actions/fetchEngagements';
 import Engagements from '../components/Engagements';
 import Engagement from '../components/Engagement';
@@ -17,10 +17,12 @@ class EngagementsContainer extends React.Component {
     render() {
         return (
             <div>
-                <Route exact path= '/' component={WelcomePage}/>
-                <Route path='/engagements/new' component={EngagementForm}/>
-                <Route path='engagement/:id' render={(routerProps) => <Engagement {...routerProps} engagement={this.props.engagement}/>}/>
-                <Route exact path='/engagements' render={() => <Engagements engagements={this.props.engagements}/>}/>
+                <Switch>
+                    <Route exact path= '/' component={WelcomePage}/>
+                    <Route path='/engagements/new' component={EngagementForm}/>
+                    <Route path='/engagements/:id' render={(routerProps) => <Engagement {...routerProps} engagements={this.props.engagements}/>}/>
+                    <Route path='/engagements' render={() => <Engagements engagements={this.props.engagements}/>}/>
+                </Switch>
             </div>
         )
     }
