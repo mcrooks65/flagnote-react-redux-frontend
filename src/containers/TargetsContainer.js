@@ -6,8 +6,7 @@ class TargetsContainer extends React.Component {
     render() {
         return (
             <div>
-                <h3>TargetsContainer</h3>
-                <TargetForm/>
+                <TargetForm engagement={this.props.engagement}/>
                 <Targets targets={this.props.engagement && this.props.engagement.targets}/>
             </div>
         )
