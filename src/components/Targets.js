@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Targets = (props) => {
     return (
@@ -6,7 +7,7 @@ const Targets = (props) => {
             <ul> 
             {props.targets && props.targets.map(target => 
                 <li key={target.id}>
-                    Hostname - {target.hostname}
+                    Hostname - {target.hostname} - <Link to={`/engagements/${target.engagement_id}/targets/${target.id}`}>Edit Target</Link>
                     <ul>
                         <li>IP - {target.ipaddress}</li>
                         <li>Target ID - {target.id}</li>
