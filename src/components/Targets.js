@@ -7,7 +7,7 @@ const Targets = (props) => {
             <ul> 
             {props.targets && props.targets.map(target => 
                 <li key={target.id}>
-                    Hostname - {target.hostname} - <Link to={`/engagements/${target.engagement_id}/targets/${target.id}`}>Edit Target</Link>
+                    Hostname - {target.hostname} - <Link to={`/engagements/${target.engagement_id}/target/${target.id}`}>Edit Target</Link>
                     <ul>
                         <li>IP - {target.ipaddress}</li>
                         <li>Target ID - {target.id}</li>
@@ -25,12 +25,5 @@ const Targets = (props) => {
         </div>
     )
 }
-
-// Once again having trouble showing Engagements have no targets!
-// function hasTargets(props) {
-//     if (!props.targets){
-//         return <ul><li>No targets added!</li></ul>
-//     }
-// }
 
 export default Targets
