@@ -19,21 +19,22 @@ class EngagementsContainer extends React.Component {
             <div>
                 <Switch>
                     <Route exact path= '/' component={WelcomePage}/>
+                    <Route exact path='/engagements'>
+                        <Engagements engagements={this.props.engagements}/>
+                        <EngagementForm/>
+                    </Route>
                     <Route path='/engagements/new' component={EngagementForm}/>
-                    <Route path='/engagements/:id' render={(routerProps) => <Engagement {...routerProps} engagements={this.props.engagements}/>}/>
-                    <Route path='/engagements' render={() => <Engagements engagements={this.props.engagements}/>}/>
+                    <Route path='/engagements/:id' render={(routerProps) => <Engagement {...routerProps} engagements={this.props.engagements}/>}/>             
                 </Switch>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         engagements: state.engagements
     }
-
-    
 }
 
 export default connect(mapStateToProps, {fetchEngagements})(EngagementsContainer)
