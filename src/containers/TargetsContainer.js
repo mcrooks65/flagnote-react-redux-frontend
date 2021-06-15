@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import TargetForm from '../components/TargetForm'
 import Targets from '../components/Targets'
-// import Target from '../components/Target'
+import Target from '../components/Target'
 import {Route, Switch} from 'react-router-dom';
 
 class TargetsContainer extends React.Component {
@@ -11,11 +11,11 @@ class TargetsContainer extends React.Component {
         return (
             <div>
                 <Switch>
-                    {/* <Route exact path='/engagements/:engagement_id/targets/:target_id' render={(routerProps) => <Target {...routerProps} targets={this.props.engagement && this.props.engagement.targets}/>}/>  */}
-                    <Route path = '/engagements/:engagement_id'>
+                    <Route exact path = '/engagements/:engagement_id'>
                         <Targets targets={this.props.engagement && this.props.engagement.targets}/>
                         <TargetForm engagement={this.props.engagement}/>
                     </Route>
+                    <Route path='/engagements/:engagement_id/targets/:target_id' render={(routerProps) => <Target {...routerProps} engagement={this.props.engagement} targets={this.props.engagement && this.props.engagement.targets}/>}/> 
                 </Switch>
             </div>
         )
