@@ -14,7 +14,7 @@ const Targets = (props) => {
             <ul> 
             {props.targets && props.targets.map(target => 
                 <li key={target.id}>
-                    Hostname - {target.hostname} - <Link to={`/engagements/${target.engagement_id}/target/${target.id}`}>Edit Target</Link> - <button onClick={() => handleDelete(target)}>Delete</button>
+                    Hostname - {target.hostname} - <Link to={`/engagements/${target.engagement_id}/targets/${target.id}`}>Edit Target</Link> - <button onClick={() => handleDelete(target)}>Delete</button>
                     <ul>
                         <li>IP - {target.ipaddress}</li>
                         <li>Target ID - {target.id}</li>
