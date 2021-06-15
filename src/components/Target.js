@@ -1,39 +1,48 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addTarget} from '../actions/addTarget'
+import {editTarget} from '../actions/editTarget'
 
-class Target extends React.Component<props> {
-    //How do i get props into this class?
-    // let target = props.targets.filter(target => target.id == props.match.params.target_id)[0]
-    // Need to make initial state match correctprops...
+class Target extends React.Component {
+
+    // How to replace this.props.targets[0] with a variable when it won't let me declare here...
+    // Need to fix refresh error - TypeError: Cannot read property '0' of undefined
+
+    // state = {
+    //     hostname: this.props.targets[0].hostname,
+    //     ipaddress: this.props.targets[0].ipaddress,
+    //     target_id: this.props.match.params.target_id,
+    //     engagement_id: this.props.match.params.engagement_id,
+    //     sysinfo: this.props.targets[0].sysinfo,
+    //     vulns: this.props.targets[0].vulns,
+    //     log: this.props.targets[0].log,
+    //     loot: this.props.targets[0].loot,
+    //     status: this.props.targets[0].status
+    // }
+
     state = {
-        ipaddress: '',
-        hostname: '',
-        sysinfo: 'Requires Enumeration!',
-        vulns: 'None found yet, keep enumerating!',
-        log: 'Log activities and enter notes here.',
-        loot: 'Flags, Credentials, Hashes go here.',
+        hostname: 'DEFAULT TEST STATE',
+        ipaddress: '1.1.1.1',
+        target_id: this.props.match.params.target_id,
+        engagement_id: this.props.match.params.engagement_id,
+        sysinfo: 'STATE TEST SYSINFO',
+        vulns: 'STATE TEST VULNS',
+        log: 'STATE TEST LOG',
+        loot: 'STATE TEST LOOT',
         status: 'Vacant'
     }
 
     handleChange = (event) => {
+        console.log(this.props)
+        console.log(this.props.targets.find(target => target.id === this.props.match.params.target_id))
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
     handleSubmit = (event) => {
+        // console.log(event)
         event.preventDefault()
-        this.props.addTarget(this.state, this.props.engagement.id)
-        this.setState({
-            ipaddress: '',
-            hostname: '',
-            sysinfo: 'Requires Enumeration!',
-            vulns: 'None found yet, keep enumerating!',
-            log: 'Log activities and enter notes here.',
-            loot: 'Flags, Credentials, Hashes go here.',
-            status: 'Vacant'
-        })
+        this.props.editTarget(this.state, this.props.engagement.id)
     }
 
     render() {
@@ -41,7 +50,7 @@ class Target extends React.Component<props> {
                 <div>
                   <label>Hostname: </label>
                     <input type="text" name="hostname" value={this.state.hostname} onChange={this.handleChange}></input>
-                 <form>
+                 <form onSubmit={this.handleSubmit}>
                     <ul>          
                         <li>Status:
                             <select name="status" onChange={this.handleChange}>
@@ -51,7 +60,7 @@ class Target extends React.Component<props> {
                             </select>  
                         </li>   
                         <li>IP - {this.state.ipaddress}</li>
-                        <li>Target ID - {this.state.id}</li>
+                        <li>Target ID - {this.state.target_id}</li>
                         <li>Engagement ID - {this.state.engagement_id}</li>
                         <li>System Info: </li>
                         <textarea name="sysinfo" value={this.state.sysinfo} onChange={this.handleChange}></textarea>
@@ -70,8 +79,7 @@ class Target extends React.Component<props> {
        
 }
 
-// Likely require a new action editTarget...  Or possibly not?  addTarget might already cover this...
-export default connect(null, {addTarget})(Target)
+export default connect(null, {editTarget})(Target)
 
 // Left over code from first attempt... it's easier to grab props from arrow functions, but i don't know how to make a form without using a class.  Or if it's possible.. NEED TO RTFD
 // const Target = (props) => {
