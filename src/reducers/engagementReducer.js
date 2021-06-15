@@ -23,6 +23,15 @@ export default function engagementReducer(state = {engagements: []}, action) {
                 }
             })
             return {...state, engagements: engagements2}
+        case 'EDIT_TARGET':
+                let engagements3 = state.engagements.map(engagement => {
+                  if (engagement.id === action.payload.id) {
+                    return action.payload
+                  } else {
+                    return engagement
+                  }
+                })
+                return {...state, engagements: engagements3}
         default: 
             return state
     }  
