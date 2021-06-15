@@ -28,7 +28,7 @@ class EngagementForm extends React.Component {
     render() {
         return (
             <div>
-                <h2>Engagement Form (Under Construction)</h2>
+                <h2>Add Engagement</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Engagement Name: </label>
                     <input type='text' placeholder='CTF Name' value={this.state.name} name="name" onChange={this.handleChange}></input>
