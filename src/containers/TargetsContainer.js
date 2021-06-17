@@ -15,7 +15,11 @@ class TargetsContainer extends React.Component {
                         <Targets targets={this.props.engagement && this.props.engagement.targets}/>
                         <TargetForm engagement={this.props.engagement}/>
                     </Route>
-                    <Route path='/engagements/:engagement_id/targets/:target_id' render={(routerProps) => <Target {...routerProps} engagement={this.props.engagement} targets={this.props.engagement && this.props.engagement.targets}/>}/> 
+                    <Route path='/engagements/:engagement_id/targets/:target_id' render={(routerProps) => {
+                        
+                        const target = this.props.engagement.targets.find(target => target.id == routerProps.match.params.target_id)
+                        console.log(target)
+                        return <Target {...routerProps} engagement={this.props.engagement} target={target}/>}}/> 
                 </Switch>
             </div>
         )
