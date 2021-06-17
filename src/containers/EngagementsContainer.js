@@ -15,6 +15,9 @@ class EngagementsContainer extends React.Component {
     }
 
     render() {
+        if (this.props.engagements.length === 0) {
+            return <h1>Loading...</h1>
+        }
         return (
             <div>
                 <Switch>
