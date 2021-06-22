@@ -46,7 +46,7 @@ class Target extends React.Component {
                                 <option>Rooted</option>
                             </select>  
                         </li>   
-                        <li>IP - <input type='text' value={this.state.ipaddress} onChange={this.handleChange}/></li>
+                        <li>IP - <input type='text' name="ipaddress" value={this.state.ipaddress} onChange={this.handleChange}/></li>
                         <li>Target ID - {this.state.target_id}</li>
                         <li>Engagement ID - {this.state.engagement_id}</li>
                         <li>System Info: </li>
