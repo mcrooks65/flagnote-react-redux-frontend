@@ -34,31 +34,31 @@ class Target extends React.Component {
 
     render() {
         return (          
-                <div>
-                  <label>Hostname: </label>
-                    <input type="text" name="hostname" value={this.state.hostname} onChange={this.handleChange}></input>
+                <div class="font-bold text-2xl">
+                  <label class="">Hostname: </label>
+                    <input class="bg-gray-700 p-2" type="text" name="hostname" value={this.state.hostname} onChange={this.handleChange}></input>
                  <form onSubmit={this.handleSubmit}>
                     <ul>          
+                        <li>IP - <input class="bg-gray-700 p-2" type='text' name="ipaddress" value={this.state.ipaddress} onChange={this.handleChange}/></li>
                         <li>Status:
-                            <select name="status" value={this.state.status} onChange={this.handleChange}>
+                            <select class="bg-gray-700 p-2" name="status" value={this.state.status} onChange={this.handleChange}>
                                 <option>Vacant</option>
                                 <option>Shelled</option>
                                 <option>Rooted</option>
                             </select>  
                         </li>   
-                        <li>IP - <input type='text' name="ipaddress" value={this.state.ipaddress} onChange={this.handleChange}/></li>
                         <li>Target ID - {this.state.target_id}</li>
                         <li>Engagement ID - {this.state.engagement_id}</li>
                         <li>System Info: </li>
-                        <textarea name="sysinfo" rows="6" cols="100" value={this.state.sysinfo} onChange={this.handleChange}></textarea>
+                        <textarea class="bg-gray-700 p-2" name="sysinfo" rows="6" cols="100" value={this.state.sysinfo} onChange={this.handleChange}></textarea>
                         <li>Vulnerabilities </li>
-                        <textarea name="vulns" rows="6" cols="100" value={this.state.vulns} onChange={this.handleChange}></textarea>
+                        <textarea class="bg-gray-700 p-2" name="vulns" rows="6" cols="100" value={this.state.vulns} onChange={this.handleChange}></textarea>
                         <li>Log:</li>
-                        <textarea name="log" rows="6" cols="100" value={this.state.log} onChange={this.handleChange}></textarea>
+                        <textarea class="bg-gray-700 p-2" name="log" rows="6" cols="100" value={this.state.log} onChange={this.handleChange}></textarea>
                         <li>Loot:</li>
-                        <textarea name="loot" rows="6" cols="100" value={this.state.loot} onChange={this.handleChange}></textarea>
+                        <textarea class="bg-gray-700 p-2" name="loot" rows="6" cols="100" value={this.state.loot} onChange={this.handleChange}></textarea>
                     </ul>
-                    <input type="submit"/>
+                    <input class="bg-green-700 p-2" value="Update Target" type="submit"/>
                  </form>              
              </div>
         )}

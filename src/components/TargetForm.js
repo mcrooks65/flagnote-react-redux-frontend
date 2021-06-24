@@ -36,14 +36,14 @@ class TargetForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <h2>Add New Target to this Engagement</h2>
+            <div class="text-2xl p-2">
+                <h2 class="text-center text-black text-4xl font-bold p-8">Add New Target to This Engagement</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Hostname: </label>
-                    <input type="text" name="hostname" value={this.state.hostname} onChange={this.handleChange}></input>
+                    <input class="bg-gray-700 p-1" placeholder="VulnSiteExample.com" type="text" name="hostname" value={this.state.hostname} onChange={this.handleChange}></input>
                     <br/>
                     <label>IP Address: </label>
-                    <input type="text" name="ipaddress" value={this.state.ipaddress} onChange={this.handleChange}></input>
+                    <input class="bg-gray-700 p-1" placeholder="1.2.3.4" type="text" name="ipaddress" value={this.state.ipaddress} onChange={this.handleChange}></input>
                     <br/>
                     {/* <label>Status: </label>
                     <select name="status" value={this.state.status} onChange={this.handleChange}>
@@ -52,7 +52,7 @@ class TargetForm extends React.Component {
                         <option>Rooted</option>
                     </select> */}
                     <br/><br/>
-                    <input type="submit"/>
+                    <input value="Submit New Target to This Engagement" class="bg-green-700 p-2" type="submit"/>
                 </form>
                 
             </div>

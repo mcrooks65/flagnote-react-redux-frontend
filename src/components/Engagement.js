@@ -7,9 +7,9 @@ const Engagement = (props) => {
     let engagement = props.engagements[engagementID]
 
     return (
-        <div>
+        <div class="font-mono p-8 bg-red-700">
             <div>
-                <h3>#{engagement ? engagement.id : null}. {engagement ? engagement.name : null} - {engagement ? engagement.status : null} </h3>            
+                <h3 class="text-center text-black text-5xl font-bold p-4">#{engagement ? engagement.id : null}. {engagement ? engagement.name : null} - {engagement ? engagement.status : null} </h3>            
                 <TargetsContainer engagement={engagement}/>
             </div>
         </div>

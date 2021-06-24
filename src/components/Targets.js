@@ -10,11 +10,11 @@ const Targets = (props) => {
     }
 
     return (
-        <div>
+        <div class="text-xl">
             <ul> 
             {props.targets && props.targets.map(target => 
-                <li key={target.id}>
-                    Hostname - {target.hostname} - <Link to={`/engagements/${target.engagement_id}/targets/${target.id}`}>Edit Target</Link> - <button onClick={() => handleDelete(target)}>Delete</button>
+                <li class="p-3" key={target.id}>
+                    <li class="text-3xl font-bold">Hostname: {target.hostname} - <Link class="underline" to={`/engagements/${target.engagement_id}/targets/${target.id}`}>Edit Target</Link> - <button class="underline" onClick={() => handleDelete(target)}>Delete</button></li>
                     <ul>
                         <li>IP - {target.ipaddress}</li>
                         <li>Target ID - {target.id}</li>
