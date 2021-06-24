@@ -3,15 +3,19 @@ import React from 'react'
 
 const WelcomePage = () => {
   return (
-    <div>
-        <h1>Welcome to FlagNote v0.25</h1>
-        <a href="http://localhost:3000/engagements">
-          List All Engagements
+    <div class="bg-red-700 font-mono">
+      <div class="container max-w-m mx-auto bg-green-700 p-4 shadow-md">
+        <p class="text-center text-black text-8xl font-medium">Welcome to FlagNote v0.35</p>
+      </div>
+      <div class="text-5xl text-center p-12">
+        <a class="underline" href="http://localhost:3000/engagements">
+          List Active Engagements
         </a>
         <br/>
-        <a href="http://localhost:3000/engagements/new">
+        <a class="underline" href="http://localhost:3000/engagements/new">
           Create New Engagement
         </a>
+      </div>
     </div>
   )
 }
