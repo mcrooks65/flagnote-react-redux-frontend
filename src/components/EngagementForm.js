@@ -27,7 +27,7 @@ class EngagementForm extends React.Component {
 
     render() {
         return (
-            <div class="bg-red-700 font-mono p-4">
+            <div class="container font-mono p-4">
                 <h2 class="text-center text-black text-5xl font-bold p-4">Add Engagement</h2>
                 <br/>
                 <div class="text-2xl flex-col text-left">

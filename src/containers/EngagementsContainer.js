@@ -19,7 +19,7 @@ class EngagementsContainer extends React.Component {
             return <h1>Loading...</h1>
         }
         return (
-            <div>
+            <div class="bg-red-700">
                 <Switch>
                     <Route exact path= '/' component={WelcomePage}/>
                     <Route exact path='/engagements'>
