@@ -1,8 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {deleteTarget} from '../actions/deleteTarget'
 import Target from './Target.js'
-
 
 class Targets extends React.Component {
 
@@ -10,10 +7,6 @@ class Targets extends React.Component {
             likeMultiplyer: 1,
             // likes: 0
         }
-
-    handleDelete = (target) => {
-        this.props.deleteTarget(target.id,target.engagement_id)
-    }
 
     handleChange = (event) => {
         this.setState({
@@ -31,11 +24,10 @@ class Targets extends React.Component {
                 {this.props.targets && this.props.targets.map(target => 
                     <Target target={target} likeMultiplyer={this.state.likeMultiplyer}/>
                 )}
-                
             </ul>
             </div>
         )
     }
 }
 
-export default connect(null, {deleteTarget})(Targets)
+export default Targets

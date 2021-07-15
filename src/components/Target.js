@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {deleteTarget} from '../actions/deleteTarget'
+import {connect} from 'react-redux'
 
 class Target extends React.Component {
 
@@ -11,6 +13,10 @@ class Target extends React.Component {
         this.setState({
             likes: parseInt(this.state.likes) + parseInt(this.props.likeMultiplyer)
         })
+    }
+
+    handleDelete = (target) => {
+        this.props.deleteTarget(target.id,target.engagement_id)
     }
 
     render() {
@@ -38,4 +44,4 @@ class Target extends React.Component {
     }
 }
 
-export default Target
+export default connect(null, {deleteTarget})(Target)
