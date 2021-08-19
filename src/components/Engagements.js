@@ -1,8 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-// import {connect} from 'react-redux'
-import Engagement from './Engagement'
-
 
 class Engagements extends React.Component {
 
@@ -11,18 +8,24 @@ class Engagements extends React.Component {
     sorted: false
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps == this.props){
+    } else {
+      this.sortEngagements()
+    }
+  }
+
   sortEngagements = () => {
     this.state.sorted = !this.state.sorted
     console.log(this.state.sorted)
     if (this.state.sorted === true) {
-      this.setState({sortedEngagements: this.state.sortedEngagements.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))})
+      let freshProps = [...this.props.engagements]
+      this.setState({sortedEngagements: freshProps.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))})
     } else {
       this.setState({sortedEngagements: [...this.props.engagements]})
     }
     console.log(this.state.sortedEngagements)
   }
-
- 
 
   render() {
     return ( 
