@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import TargetForm from '../components/TargetForm'
 import Targets from '../components/Targets'
-import Target from '../components/Target'
+import UpdateTarget from '../components/UpdateTarget'
 import {Route, Switch} from 'react-router-dom';
 
 class TargetsContainer extends React.Component {
@@ -19,7 +19,7 @@ class TargetsContainer extends React.Component {
                         
                         const target = this.props.engagement.targets.find(target => target.id == routerProps.match.params.target_id)
                         console.log(target)
-                        return <Target {...routerProps} engagement={this.props.engagement} target={target}/>}}/> 
+                        return <UpdateTarget {...routerProps} engagement={this.props.engagement} target={target}/>}}/> 
                 </Switch>
             </div>
         )

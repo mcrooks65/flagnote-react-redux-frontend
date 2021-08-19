@@ -1,96 +1,47 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import {deleteTarget} from '../actions/deleteTarget'
 import {connect} from 'react-redux'
-import {editTarget} from '../actions/editTarget'
 
 class Target extends React.Component {
 
-    // Need to fix refresh error - TypeError: Cannot read property '0' of undefined
-    // Okay refresh error half fixed... needs to force a fresh update of state or something...
-    // Also make sure it can work with multiple targets, right now with this.props.targets[0] it's only accessing first target in array.
     state = {
-        hostname: this.props.target.hostname,
-        status: this.props.target.status,
-        ipaddress: this.props.target.ipaddress,
-        target_id: this.props.match.params.target_id,
-        engagement_id: this.props.match.params.engagement_id,
-        sysinfo: this.props.target.sysinfo,
-        vulns: this.props.target.vulns,
-        log:this.props.target.log,
-        loot: this.props.target.loot,
+        likes: 0
     }
 
-    handleChange = (event) => {
-        console.log(this.props)
-        // console.log(this.props.targets.find(target => target.id === this.props.match.params.target_id))
+    handleLike = () => {
         this.setState({
-            [event.target.name]: event.target.value
+            likes: parseInt(this.state.likes) + parseInt(this.props.likeMultiplyer)
         })
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
-        this.props.editTarget(this.state, this.props.engagement.id)
+    handleDelete = (target) => {
+        this.props.deleteTarget(target.id,target.engagement_id)
     }
 
     render() {
-        return (          
-                <div class="font-bold text-2xl">
-                  <label class="">Hostname: </label>
-                    <input class="bg-gray-700 p-2" type="text" name="hostname" value={this.state.hostname} onChange={this.handleChange}></input>
-                 <form onSubmit={this.handleSubmit}>
-                    <ul>          
-                        <li>IP - <input class="bg-gray-700 p-2" type='text' name="ipaddress" value={this.state.ipaddress} onChange={this.handleChange}/></li>
-                        <li>Status:
-                            <select class="bg-gray-700 p-2" name="status" value={this.state.status} onChange={this.handleChange}>
-                                <option>Vacant</option>
-                                <option>Shelled</option>
-                                <option>Rooted</option>
-                            </select>  
-                        </li>   
-                        <li>Target ID - {this.state.target_id}</li>
-                        <li>Engagement ID - {this.state.engagement_id}</li>
-                        <li>System Info: </li>
-                        <textarea class="bg-gray-700 p-2" name="sysinfo" rows="6" cols="100" value={this.state.sysinfo} onChange={this.handleChange}></textarea>
-                        <li>Vulnerabilities </li>
-                        <textarea class="bg-gray-700 p-2" name="vulns" rows="6" cols="100" value={this.state.vulns} onChange={this.handleChange}></textarea>
-                        <li>Log:</li>
-                        <textarea class="bg-gray-700 p-2" name="log" rows="6" cols="100" value={this.state.log} onChange={this.handleChange}></textarea>
-                        <li>Loot:</li>
-                        <textarea class="bg-gray-700 p-2" name="loot" rows="6" cols="100" value={this.state.loot} onChange={this.handleChange}></textarea>
-                    </ul>
-                    <input class="bg-green-700 p-2" value="Update Target" type="submit"/>
-                 </form>              
-             </div>
-        )}
-       
+        return (
+            <div class="text-xl">
+                <ul> 
+                    <li class="p-3" key={this.props.target.id}>
+                        <li class="text-3xl font-bold">Hostname: {this.props.target.hostname} - <Link class="underline" to={`/engagements/${this.props.target.engagement_id}/targets/${this.props.target.id}`}>Edit Target</Link> - <button class="underline font-bold" onClick={() => this.handleDelete(this.props.target)}>Delete</button></li>
+                        <ul>
+                            <li>IP - {this.props.target.ipaddress}</li>
+                            <li>Target ID - {this.props.target.id}</li>
+                            <li>Engagement ID - {this.props.target.engagement_id}</li>
+                            <li>System Info - {this.props.target.sysinfo}</li>
+                            <li>Vulnerabilities - {this.props.target.vulns}</li>
+                            <li>Log - {this.props.target.log}</li>
+                            <li>Loot - {this.props.target.loot}</li>
+                            <li>Status - {this.props.target.status}</li>
+                            <li class="text-right"><button onClick={() => this.handleLike(this.props.target)}>Like {this.state.likes}</button></li>
+                        </ul>
+                    </li>
+               
+                </ul>
+            </div>
+        )
+    }
 }
 
-export default connect(null, {editTarget})(Target)
-
-// Left over code from first attempt... it's easier to grab props from arrow functions, but i don't know how to make a form without using a class.  Or if it's possible.. NEED TO RTFD
-// const Target = (props) => {
-  
-//     console.log(props.targets[0])
-    
-//     let target = props.targets.filter(target => target.id == props.match.params.target_id)[0]
-
-//     console.log(target[0])
-//      return (
-//          <div>
-             
-//          </div>
-//    )
- 
-//  }
-
-    // state = {
-    //     hostname: 'DEFAULT TEST STATE',
-    //     ipaddress: '1.1.1.1',
-    //     target_id: this.props.match.params.target_id,
-    //     engagement_id: this.props.match.params.engagement_id,
-    //     sysinfo: 'STATE TEST SYSINFO',
-    //     vulns: 'STATE TEST VULNS',
-    //     log: 'STATE TEST LOG',
-    //     loot: 'STATE TEST LOOT',
-    //     status: 'Vacant'
-    // }
+export default connect(null, {deleteTarget})(Target)
